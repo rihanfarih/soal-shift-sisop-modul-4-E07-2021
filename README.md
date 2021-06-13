@@ -20,8 +20,10 @@ d) Setiap pembuatan direktori ter-encode (mkdir atau rename) akan tercatat ke se
 e) Metode encode pada suatu direktori juga berlaku terhadap direktori yang ada di dalamnya.(rekursif)
 
 ### penjelasan
+
+fungsi berikut ini adalah atbash cipher dimana ia mencerminkan/membalikkan huruf untuk melakukan decrypt dan encrypt, misalnya a menjadi z, b menjadi y, dan seterusnya. Sehingga pada fungsi ini hanya perlu membalik huruf tersebut untuk uppercase dan lowercase. String yang akan di decrypt atau encrypt disimpan pada sebuah char msg untuk mengantisipasi alamat yang menunjuk ke alamat lain karena merupakan sebuah pointer.
 ```
-    char msg[1024] ;
+   char msg[1024] ;
     strcpy(msg, message) ;
     int x=strlen(msg);
     int i ;
@@ -34,41 +36,22 @@ e) Metode encode pada suatu direktori juga berlaku terhadap direktori yang ada d
     }
     char* cipher = msg ;
     return cipher ;
+.....
 ```
- fungsi diatas adalah atbash cipher dimana ia mencerminkan/membalikkan huruf untuk melakukan decrypt dan encrypt, misalnya a menjadi z, b menjadi y, dan seterusnya. Sehingga pada fungsi ini hanya perlu membalik huruf tersebut untuk uppercase dan lowercase. String yang akan di decrypt atau encrypt disimpan pada sebuah char msg untuk mengantisipasi alamat yang menunjuk ke alamat lain karena merupakan sebuah pointer.
+kemudian Fungsi ini bertujuan untuk mendapatkan path asli , awalnya diperlukan untuk  mengecek apakah folder pada` /home/usr/Downloads` terdapat directory dengan nama `AtoZ_folder`, kemudian menggeser pointer karena path string yang dicek dimulai dari '/'.
  
  ```
-     char *atoz;
-    if (strcmp(path, "/") != 0) {
-        atoz= strstr(path, "/AtoZ_");
-        if (atoz) {
-           
-            cekk = 1 ;
-            cekaz = 1 ;
-           
-            atoz++ ;
-        }
-    }
-```
-laluFungsi untuk mendapatkan path asli , Pertama perlu mengecek apakah folder pada `/home/usr/Downloads` terdapat directory dengan nama `AtoZ_folder`, kemudian menggeser pointer karena path string yang dicek dimulai dari '/'.
-
-```
+    ...
      x = 0 ;
         while ((encName = strtok_r(cut, "/", &cut))) {
             bzero(temp, 1024) ;
             if(x == 0) {
                 strcpy(temp, encName) ;
-                
                 strcat(realPath, temp) ;
                 x = 1 ;
                 continue ;
             }
-```
-```
-    char *dot = strchr(encName, '.') ;
-    char fileName[1024] ;
-    bzero(fileName, 1024) ;
-    // Kalau ada extension
+....
     if (dot) {
     
         strncpy(fileName, encName, strlen(encName) - strlen(dot)) ;
@@ -80,19 +63,11 @@ laluFungsi untuk mendapatkan path asli , Pertama perlu mengecek apakah folder pa
         strcpy(fileName, encName) ;
         strcpy(fileName, atbash(fileName)) ;
     }
+...
 ```
-Apabila benar terdapat directory `AtoZ_folder` maka menggunakan strtok_r untuk mengecek masing-masing folder atau filename yang dipisahkan oleh '/'. Ketika sudah selesai mengecek hingga ujung path, kita perlu mengecek apakah file tersebut sesuai dengan file path relatif. Untuk file, perlu mengecek apakah file tersebut memiliki extension atau tidak karena extension tidak perlu di-encode. Setelah itu, filename di encode dan di strcat dengan path sebelumnya.
+dan Apabila benar terdapat directory AtoZ_folder maka menggunakan strtok_r untuk mengecek masing-masing folder atau filename yang dipisahkan oleh '/'. Ketika sudah selesai mengecek hingga ujung path, kita perlu mengecek apakah file tersebut sesuai dengan file path relatif. Untuk file, perlu mengecek apakah file tersebut memiliki extension atau tidak karena extension tidak perlu di-encode. Setelah itu, filename di encode dan di strcat dengan path sebelumnya.
 
-```
-    char folderName[1024] ;
-    bzero(folderName, 1024) ;
-    strcpy(folderName, encName) ;
-    strcpy(folderName, atbash(folderName)) ;
-    strcat(realPath, folderName) ;
-            }
-```
-Untuk folder, kita bisa langsung melakukan encode nama folder tersebut. Foldername juga perlu di strcat dengan path sebelumnya.
-### kendala
+
 
 
 ## no2
@@ -112,7 +87,7 @@ Untuk folder, kita bisa langsung melakukan encode nama folder tersebut. Folderna
 **Soal** : Pada metode enkripsi ini, file-file pada direktori asli akan menjadi terpecah menjadi file-file kecil sebesar 1024 bytes, sementara jika diakses melalui filesystem rancangan Sin dan Sei akan menjadi normal.
 
 
-### kendala yang dialami
+
 
 ## no3
 
@@ -163,4 +138,4 @@ Adapun berikut adalah format baris pada log.
 
 CMD : System Call yang terpanggil, DESC : informasi dan parameter tambahan, Level : Level logging, dd : tanggal, mm : bulan, yyyy : tahun, HH : jam (format 24 Jam), MM : menit,  dan SS : detik.
 
-## output
+## Kendala yang dialami (1,2,3)
