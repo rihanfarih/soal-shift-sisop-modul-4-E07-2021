@@ -146,3 +146,5 @@ CMD : System Call yang terpanggil, DESC : informasi dan parameter tambahan, Leve
 ![error1](https://github.com/rihanfarih/soal-shift-sisop-modul-4-E07-2021/blob/main/ss/1623593865415.png)
 ![error2](https://github.com/rihanfarih/soal-shift-sisop-modul-4-E07-2021/blob/main/ss/1623593986081.png)
 ![error3](https://github.com/rihanfarih/soal-shift-sisop-modul-4-E07-2021/blob/main/ss/1623595757936.png)
+
+oleh karena itu kami memohon maaf atas kekurangan dalam pengerjaan modul 4 ini 
