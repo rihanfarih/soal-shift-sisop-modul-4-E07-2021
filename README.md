@@ -138,7 +138,7 @@ Adapun berikut adalah format baris pada log.
 
 CMD : System Call yang terpanggil, DESC : informasi dan parameter tambahan, Level : Level logging, dd : tanggal, mm : bulan, yyyy : tahun, HH : jam (format 24 Jam), MM : menit,  dan SS : detik.
 
-## Kendala yang dialami (1,2,3)
+## Kendala yang dialami (1,2,3,4)
 * terjadi kendala saat mengcommit perkerjaan kami , beberapa perkerjaan tidak tertampilkan di github karena saat di commit tidak muncul di github
 * Tingkat kesulitan dari praktikum ini jauh meningkat sehingga kelompok kami kesulitan dalam pengerjaannya
 *  pada saat mengcompile sering terjadi error sehingga menyulitkan dalam pengerjaan
